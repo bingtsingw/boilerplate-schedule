@@ -15,15 +15,10 @@
     "moduleResolution": "node",
     "jsx": "react",
     "target": "ES2017",
-    "lib": [
-      "ES2017",
-      "dom"
-    ],
+    "lib": ["ES2017", "dom"],
     "sourceMap": true,
     "rootDir": "src",
     "outDir": "lib"
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }

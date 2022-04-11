@@ -36,7 +36,6 @@ $ malagu deploy -m scf -m prod    # 部署到腾讯云线上环境
 
 Malagu 是基于 TypeScript 的 Serverless First、组件化、平台无关的渐进式应用框架。
 
-
 ## 特征
 
 - 约定大于配置，零配置，开箱即用
@@ -91,4 +90,3 @@ malagu deploy
 - [前端架构](https://malagu.cellbang.com/guide/%E5%89%8D%E7%AB%AF%E6%9E%B6%E6%9E%84)
 - [React 开发](https://malagu.cellbang.com/dev/react)
 - [前后端一体化开发](https://malagu.cellbang.com/dev/%E5%89%8D%E5%90%8E%E7%AB%AF%E4%B8%80%E4%BD%93%E5%8C%96%E5%BC%80%E5%8F%91)
-
