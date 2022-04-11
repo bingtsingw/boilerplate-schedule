@@ -14,7 +14,10 @@
     "@malagu/schedule": "^2.20.5"
   },
   "devDependencies": {
+    "@commitlint/cli": "^16.2.3",
+    "@commitlint/config-conventional": "^16.2.1",
     "@malagu/cli": "^2.20.5",
+    "commitizen": "^4.2.4",
     "prettier": "^2.6.2",
     "prettier-plugin-organize-imports": "^2.3.4",
     "prettier-plugin-packagejson": "^2.2.17"
