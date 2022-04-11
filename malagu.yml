@@ -1,3 +1,14 @@
 mode: [ timer ]
 targets:
   - backend
+
+malagu:
+  cloud:
+    disableProjectId: true
+    trigger:
+      name: timer
+    function:
+      instanceConcurrency: 100
+      memorySize: 128
+      timeout: 3600
+      name: boilerplate-schedule

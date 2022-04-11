@@ -1,0 +1,7 @@
+malagu:
+  cloud:
+    service:
+      sync: false
+      name: boilerplate-schedule-dev
+    alias:
+      name: development
