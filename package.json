@@ -1,19 +1,17 @@
 {
   "name": "schedule",
   "dependencies": {
-    "@malagu/core": "latest",
-    "@malagu/schedule": "latest"
+    "@malagu/core": "^2.20.5",
+    "@malagu/schedule": "^2.20.5"
   },
   "devDependencies": {
-    "@malagu/cli": "latest"
+    "@malagu/cli": "^2.20.5"
   },
   "scripts": {
     "clean": "rimraf lib dist .malagu",
     "build": "malagu build",
     "start": "malagu serve",
-    "deploy": "malagu deploy -m scf -m test",
-    "deploy:test": "malagu deploy -m scf -m test",
-    "deploy:pre": "malagu deploy -m scf -m pre",
-    "deploy:prod": "malagu deploy -m scf -m prod"
+    "deploy:development": "malagu deploy -m fc -m development",
+    "deploy:production": "malagu deploy -m fc -m production"
   }
 }
