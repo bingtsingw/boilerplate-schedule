@@ -1,0 +1,31 @@
+name: Init Template Create
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - uses: actions/checkout@v3.0.0
+
+      - run: |
+          NAME_TEMPLATE=`jq -r '.name' package.json`
+          NAME_PROJECT=${{ github.event.repository.name }}
+          cp .github/template/README.md README.md
+          rm -rf .github/template .github/workflows/init-template-create.yml LICENSE
+          grep -rliI "$NAME_TEMPLATE" * .[^.]* | xargs sed -i "s/$NAME_TEMPLATE/$NAME_PROJECT/g"
+          sed -i "s/\[date\]/$(date '+%Y-%m-%d %T')/g" README.md
+          sed -i "s/\[template\]/$NAME_TEMPLATE/g" README.md
+          sed -i "s/FC_REGION: '.*'/FC_REGION: ''/g" .github/workflows/ci.yml
+          sed -i "s/cronExpression: '.*'/cronExpression: ''/g" malagu.yml
+
+      - uses: peter-evans/create-pull-request@v4.0.2
+        with:
+          token: ${{ secrets.CREATE_PR_TOKEN }}
+          commit-message: init template create
+          branch: create-pull-request/init-template-create
+          delete-branch: true
+          title: '[create-pull-request] init template create'
