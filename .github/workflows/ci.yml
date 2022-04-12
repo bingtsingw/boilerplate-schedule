@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  workflow_dispatch:
+
+env:
+  NODE_VERSION: '16'
+  FC_REGION: 'cn-zhangjiakou'
+
+jobs:
+  check-secret:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3.0.0
+
+      - uses: firenza/verify-secrets@v2
+        with:
+          secrets: ${{ toJSON(secrets) }}
+          exclusions: GITHUB_TOKEN
+
+  deploy-branch:
+    runs-on: ubuntu-latest
+    if: github.ref_name == 'main' || github.ref_name == 'develop'
+    steps:
+      - uses: actions/checkout@v3.0.0
+      - uses: actions/setup-node@v3.1.0
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - uses: bahmutov/npm-install@v1.8.7
+      - run: |
+          MALAGU_REGION=${{ env.FC_REGION }}
+          MALAGU_ACCOUNT_ID=${{ secrets.FC_ID }}
+          MALAGU_ACCESS_KEY_ID=${{ secrets.FC_AK }}
+          MALAGU_ACCESS_KEY_SECRET=${{ secrets.FC_SK }}
+      - if: github.ref_name == 'develop'
+        run: npm run deploy:development
+      - if: github.ref_name == 'main'
+        run: npm run deploy:production
