@@ -26,6 +26,7 @@ jobs:
   deploy-branch:
     runs-on: ubuntu-latest
     if: github.ref_name == 'main' || github.ref_name == 'develop'
+    needs: [check-secret]
     steps:
       - uses: actions/checkout@v3.0.0
       - uses: actions/setup-node@v3.1.0
@@ -33,10 +34,10 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
       - uses: bahmutov/npm-install@v1.8.7
       - run: |
-          MALAGU_REGION=${{ env.FC_REGION }}
-          MALAGU_ACCOUNT_ID=${{ secrets.FC_ID }}
-          MALAGU_ACCESS_KEY_ID=${{ secrets.FC_AK }}
-          MALAGU_ACCESS_KEY_SECRET=${{ secrets.FC_SK }}
+          echo "MALAGU_REGION=${{ env.FC_REGION }}" >> $GITHUB_ENV
+          echo "MALAGU_ACCOUNT_ID=${{ secrets.FC_ID }}" >> $GITHUB_ENV
+          echo "MALAGU_ACCESS_KEY_ID=${{ secrets.FC_AK }}" >> $GITHUB_ENV
+          echo "MALAGU_ACCESS_KEY_SECRET=${{ secrets.FC_SK }}" >> $GITHUB_ENV
       - if: github.ref_name == 'develop'
         run: npm run deploy:development
       - if: github.ref_name == 'main'
