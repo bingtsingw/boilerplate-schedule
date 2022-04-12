@@ -6,7 +6,9 @@ malagu:
   cloud:
     disableProjectId: true
     trigger:
-      name: timer
+      triggerConfig:
+        payload:
+        cronExpression: 0 0 */1 * * *
     function:
       instanceConcurrency: 100
       memorySize: 128
