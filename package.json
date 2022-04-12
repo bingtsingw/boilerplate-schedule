@@ -1,17 +1,19 @@
 {
-  "name": "schedule",
+  "name": "boilerplate-schedule",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
     "build": "malagu build",
     "clean": "rimraf lib dist .malagu",
     "deploy:development": "malagu deploy -m fc -m development",
     "deploy:production": "malagu deploy -m fc -m production",
     "deps:check": "dependency-check './src/**/*.ts' --missing --ignore-module '@/*'",
+    "dev": "malagu serve",
     "format": "prettier . --check",
     "format:fix": "prettier . --write",
     "lint:js": "eslint . --cache --ext .js,.jsx,.ts,.tsx",
     "lint:js:fix": "eslint . --cache --ext .js,.jsx,.ts,.tsx --fix",
-    "prepare": "if [ -d './node_modules/husky' ]; then husky install; fi",
-    "start": "malagu serve"
+    "prepare": "if [ -d './node_modules/husky' ]; then husky install; fi"
   },
   "dependencies": {
     "@malagu/core": "^2.20.5",
