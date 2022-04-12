@@ -1,3 +1,4 @@
 {
+  "**/*.{js,ts}": "eslint",
   "**/*.{js,ts,html,css,md,json}": "prettier --check"
 }
