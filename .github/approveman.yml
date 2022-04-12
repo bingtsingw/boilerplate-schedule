@@ -1,0 +1,5 @@
+ownership_rules:
+  allow_dot_github: true
+  global_blacklisted_users: []
+  directory_matching_rules:
+    - path: '**/*'
