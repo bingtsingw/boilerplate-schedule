@@ -5,6 +5,10 @@ on:
     branches:
       - main
       - develop
+    paths:
+      - 'src/**'
+      - 'malagu*'
+      - '!**.md'
   workflow_dispatch:
 
 env:
