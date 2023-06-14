@@ -22,7 +22,7 @@ jobs:
           sed -i "s/FC_REGION: '.*'/FC_REGION: ''/g" .github/workflows/ci.yml
           sed -i "s/cronExpression: '.*'/cronExpression: ''/g" malagu.yml
 
-      - uses: peter-evans/create-pull-request@v4.0.2
+      - uses: peter-evans/create-pull-request@v5.0.2
         with:
           token: ${{ secrets.CREATE_PR_TOKEN }}
           commit-message: init template create
