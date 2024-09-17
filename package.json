@@ -16,8 +16,8 @@
     "prepare": "if [ -d './node_modules/husky' ]; then husky install; fi"
   },
   "dependencies": {
-    "@malagu/core": "^2.23.2",
-    "@malagu/schedule": "^2.23.2"
+    "@malagu/core": "^2.60.3",
+    "@malagu/schedule": "^2.60.3"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.0.3",
