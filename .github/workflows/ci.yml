@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3.0.0
+      - uses: actions/checkout@v4.2.2
 
       - uses: firenza/verify-secrets@v2
         with:
@@ -32,7 +32,7 @@ jobs:
     if: github.ref_name == 'main' || github.ref_name == 'develop'
     needs: [check-secret]
     steps:
-      - uses: actions/checkout@v3.0.0
+      - uses: actions/checkout@v4.2.2
       - uses: actions/setup-node@v3.1.1
         with:
           node-version: ${{ env.NODE_VERSION }}
